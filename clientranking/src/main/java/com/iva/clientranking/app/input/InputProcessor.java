@@ -16,13 +16,14 @@ public class InputProcessor {
 	private InputValidator inputValidator;
 
 	public InputDto process(String... args) {
-		if (args == null || args.length != 4) {
+		InputDto inputDto =  inputValidator.verifyFilesPresent(args);
+		if (inputDto == null) {
 			printUsage();
 			return null;
 		}
 		try {
 			inputValidator.validateProperties();
-			InputDto inputDto = new InputDto();
+
 
 			return inputDto;
 		} catch (ClientRankingException e) {

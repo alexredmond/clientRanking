@@ -5,14 +5,18 @@ import static org.junit.Assert.assertNull;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import com.iva.clientranking.app.object.dto.InputDto;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class InputProcessorTest {
 
 	@InjectMocks
 	private InputProcessor inputProcessor;
+	@Mock
+	private InputValidator inputValidator;
 
 	@Before
 	public void setUp() throws Exception {

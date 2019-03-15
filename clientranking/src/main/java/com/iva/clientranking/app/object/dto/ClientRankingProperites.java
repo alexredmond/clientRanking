@@ -11,10 +11,11 @@ import lombok.Data;
 @Data
 public class ClientRankingProperites {
 
-	@Value("${clientRanking.ranking.limit:40}")
+	@Value("${clientRanking.ranking.limit:50}")
 	private Integer rankingLimit;
 
-	@Value("${clientRanking.ranking.startDate}")
+
+	@Value("#{T(java.time.LocalDate).parse('${clientRanking.ranking.startDate:2018-01-01}')}")
 	private LocalDate filterStartDate;
 
 }
