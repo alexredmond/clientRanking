@@ -20,14 +20,14 @@ public class MainRunner implements CommandLineRunner {
 	@Override
 	public void run(String... args) {
 		log.info("EXECUTING : command line runner");
-		try {
-			inputProcessor.parseInputParameters(args);
+	//	try {
+			inputProcessor.process(args);
 			
 			
 			
-		}catch (ClientRankingException e) {
-			log.error(e.getMessage());
-		}
+//		}catch (ClientRankingException e) {
+//			log.error(e.getMessage());
+//		}
 
 	}
 
