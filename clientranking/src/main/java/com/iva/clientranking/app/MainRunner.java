@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import com.iva.clientranking.app.input.InputParser;
+import com.iva.clientranking.app.input.CsvParser;
 import com.iva.clientranking.app.input.InputProcessor;
 import com.iva.clientranking.app.object.exception.ClientRankingException;
 

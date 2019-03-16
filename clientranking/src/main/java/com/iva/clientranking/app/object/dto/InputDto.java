@@ -1,8 +1,9 @@
 package com.iva.clientranking.app.object.dto;
 
 import java.nio.file.Path;
+import java.util.List;
 
-import org.springframework.context.annotation.Configuration;
+import com.iva.clientranking.app.object.entity.Client;
 
 import lombok.Data;
 
@@ -14,5 +15,7 @@ public class InputDto {
     private Path appointmentFilePath;
     private Path serviceFilePath;
     private Path purchaseFilePath;
+    
+    private List<Client> clientList;
 
 }

@@ -10,7 +10,7 @@ public class SampleExecutor {
             new String[]{"files/test1/c1.csv", "files/test1/a1.csv", "files/test1/s1.csv", "files/test1/p1.csv"};
 
     public static void main(String[] args) {
-        new ClientRankingApplication().main(sampleFiles);
+        ClientRankingApplication.main(sampleFiles);
     }
 
 }
