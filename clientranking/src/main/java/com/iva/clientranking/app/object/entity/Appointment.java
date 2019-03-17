@@ -3,6 +3,7 @@ package com.iva.clientranking.app.object.entity;
 import java.time.LocalDate;
 
 import com.opencsv.bean.CsvBindByName;
+import com.opencsv.bean.CsvCustomBindByName;
 import com.opencsv.bean.CsvDate;
 
 public class Appointment extends CsvBean {
@@ -13,7 +14,7 @@ public class Appointment extends CsvBean {
 	private String clientId;
 	
 	
-	@CsvCustomBindByName(column = 'start_time', converter = Bar.class)
+	@CsvCustomBindByName(column = "start_time", converter = Bar.class)
 	@CsvBindByName(column = "start_time")
 	@CsvDate("yyyy-MM-dd HH:mm:ss Z")
 	private LocalDate startTime;
