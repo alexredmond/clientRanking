@@ -18,6 +18,6 @@ public class Service implements CsvBean {
 	@CsvBindByName(column = "price")
 	private BigDecimal price;
 	@CsvBindByName(column = "loyalty_points")
-	private Integer loyaltyPoints;
+	private Long loyaltyPoints;
 
 }

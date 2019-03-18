@@ -57,7 +57,7 @@ public class InputValidator {
 		if (serviceFilePath.toFile().exists()) {
 			inputDto.setServiceFilePath(serviceFilePath);
 		} else {
-			log.error("Servcice file not present: {}", args[2]);
+			log.error("Service file not present: {}", args[2]);
 		}
 		Path purchaseFilePath = Paths.get(args[3]);
 		if (purchaseFilePath.toFile().exists()) {

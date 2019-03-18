@@ -17,6 +17,7 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+		<start-class>com.iva.clientranking.ClientRankingApplication</start-class>
 	</properties>
 
 	<dependencies>
@@ -44,7 +45,7 @@
 	</dependencies>
 
 	<build>
-
+		 <finalName>clientranking</finalName>
 		<testResources>
 			<testResource>
 				<directory>${project.basedir}/src/test/resources</directory>
@@ -55,6 +56,9 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				 <configuration>    
+                <mainClass>com.iva.clientranking.ClientRankingApplication</mainClass>
+            </configuration>
 			</plugin>
 		</plugins>
 

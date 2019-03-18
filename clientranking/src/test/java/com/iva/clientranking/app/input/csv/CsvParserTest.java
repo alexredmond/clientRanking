@@ -104,7 +104,7 @@ public class CsvParserTest {
 		assertEquals("f1fc7009-0c44-4f89-ac98-5de9ce58095c", service1.getId());
 		assertEquals("7416ebc3-12ce-4000-87fb-82973722ebf4", service1.getAppointmentId());
 		assertEquals("Full Head Colour", service1.getName());
-		assertEquals(Integer.valueOf(80), service1.getLoyaltyPoints());
+		assertEquals(Long.valueOf(80), service1.getLoyaltyPoints());
 		assertEquals(BigDecimal.valueOf(85.0), service1.getPrice());
 	}
 
@@ -119,7 +119,7 @@ public class CsvParserTest {
 		assertEquals("d2d3b92d-f9b5-48c5-bf31-88c28e3b73ac", purchase1.getId());
 		assertEquals("7416ebc3-12ce-4000-87fb-82973722ebf4", purchase1.getAppointmentId());
 		assertEquals("Shampoo", purchase1.getName());
-		assertEquals(Integer.valueOf(20), purchase1.getLoyaltyPoints());
+		assertEquals(Long.valueOf(20), purchase1.getLoyaltyPoints());
 		assertEquals(BigDecimal.valueOf(19.5), purchase1.getPrice());	
 	}
 }
