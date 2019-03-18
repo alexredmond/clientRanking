@@ -1,6 +1,7 @@
 package com.iva.clientranking.app.input;
 
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
 
@@ -65,6 +66,7 @@ public class InputValidatorTest {
 		when(clientRankingProperites.getFilterStartDate()).thenReturn(null);
 		inputValidator.validateProperties();
 	}
+	
 
 	@Test
 	public void validateFilesRecordsEmpty() {

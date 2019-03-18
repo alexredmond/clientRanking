@@ -13,10 +13,15 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class InputProcessor {
 
-	@Autowired
 	private InputValidator inputValidator;
-	@Autowired
 	private CsvParser csvParser;
+
+	@Autowired
+	public InputProcessor(InputValidator inputValidator, CsvParser csvParser) {
+		super();
+		this.inputValidator = inputValidator;
+		this.csvParser = csvParser;
+	}
 
 	public InputDto process(String... args) {
 		InputDto inputDto = inputValidator.verifyFilesPresent(args);

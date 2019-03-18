@@ -17,8 +17,13 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class InputValidator {
 
-	@Autowired
 	private ClientRankingProperites clientRankingProperites;
+
+	@Autowired
+	public InputValidator(ClientRankingProperites clientRankingProperites) {
+		super();
+		this.clientRankingProperites = clientRankingProperites;
+	}
 
 	public void validateProperties() throws ClientRankingException {
 		if (clientRankingProperites.getRankingLimit() == null
