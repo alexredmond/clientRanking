@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2019 Mastercard. All rights reserved.
- */
-
 package com.iva.clientranking.app.input;
 
 import com.iva.clientranking.app.object.dto.ClientRankingProperites;
@@ -41,6 +37,24 @@ public class InputProcessorIT {
     @Test
     public void testFilesParams(){
         InputDto result = inputProcessor.process("files/test1/c1.csv", "files/test1/a1.csv", "files/test1/s1.csv", "files/test1/p1-test.csv");
+        assertNull(result);
+    }
+    
+    @Test
+    public void testFilesParsed(){
+        InputDto result = inputProcessor.process("files/test1/c1.csv", "files/test1/a1.csv", "files/test1/s1.csv", "files/test1/p1.csv");
+        assertNotNull(result);
+    }
+    
+    @Test
+    public void testFilesParsedFileEmpty(){
+        InputDto result = inputProcessor.process("files/test1/c1.csv", "files/test1/a1.csv", "files/test1/s1.csv", "files/test1/p2.csv");
+        assertNull(result);
+    }
+    
+    @Test
+    public void testFilesParsingException(){
+        InputDto result = inputProcessor.process("files/test1/c1.csv", "files/test1/a1.csv", "files/test1/s1.csv", "files/test1/p3.csv");
         assertNull(result);
     }
 }

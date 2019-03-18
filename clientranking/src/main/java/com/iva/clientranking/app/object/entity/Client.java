@@ -1,12 +1,11 @@
 package com.iva.clientranking.app.object.entity;
 
 import com.opencsv.bean.CsvBindByName;
-import com.opencsv.bean.CsvBindByPosition;
 
 import lombok.Data;
 
 @Data
-public class Client extends CsvBean {
+public class Client implements CsvBean {
 
 	@CsvBindByName(column = "id")
 	private String id;

@@ -4,9 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import com.iva.clientranking.app.input.CsvParser;
 import com.iva.clientranking.app.input.InputProcessor;
-import com.iva.clientranking.app.object.exception.ClientRankingException;
+import com.iva.clientranking.app.object.dto.InputDto;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,11 +19,9 @@ public class MainRunner implements CommandLineRunner {
 	@Override
 	public void run(String... args) {
 		log.info("EXECUTING : command line runner");
-	//	try {
-			inputProcessor.process(args);
-			
-			
-			
+		// try {
+		InputDto inputDto = inputProcessor.process(args);
+
 //		}catch (ClientRankingException e) {
 //			log.error(e.getMessage());
 //		}

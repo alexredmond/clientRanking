@@ -1,11 +1,8 @@
-package com.iva.clientranking.app.input;
+package com.iva.clientranking.app.input.csv;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
+import java.math.BigDecimal;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
 import java.util.List;
@@ -15,8 +12,13 @@ import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.MockitoAnnotations;
 
+import com.iva.clientranking.app.input.csv.CsvParser;
 import com.iva.clientranking.app.object.dto.InputDto;
+import com.iva.clientranking.app.object.entity.Appointment;
 import com.iva.clientranking.app.object.entity.Client;
+import com.iva.clientranking.app.object.entity.Purchase;
+import com.iva.clientranking.app.object.entity.Service;
+import com.iva.clientranking.app.object.exception.ClientRankingException;
 
 public class CsvParserTest {
 
@@ -29,7 +31,7 @@ public class CsvParserTest {
 	}
 
 	@Test
-	public void testParsingClientFile() {
+	public void testParsingClientFile() throws ClientRankingException {
 		InputDto inputDto = new InputDto();
 		inputDto.setClientFilePath(Paths.get("files/test1/c1.csv"));
 		csvParser.parseInputParameters(inputDto);
@@ -45,7 +47,8 @@ public class CsvParserTest {
 	@Test
 	public void testParserNull() throws Exception {
 		List<Client> result = csvParser.beanBuilderExample(null, Client.class);
-		assertNull(result);
+		assertNotNull(result);
+		assertEquals(0, result.size());
 	}
 
 	@Test
@@ -77,10 +80,46 @@ public class CsvParserTest {
 	}
 
 	@Test
-	public void testParsingFile() {
+	public void testParsingAppointmentFile() throws ClientRankingException {
 		InputDto inputDto = new InputDto();
 		inputDto.setAppointmentFilePath(Paths.get("files/test1/a1.csv"));
 		csvParser.parseInputParameters(inputDto);
 		assertNotNull(inputDto.getAppointmentList());
+		assertEquals(490, inputDto.getAppointmentList().size());
+		Appointment appointment1 = inputDto.getAppointmentList().get(0);
+		assertEquals("7416ebc3-12ce-4000-87fb-82973722ebf4", appointment1.getId());
+		assertEquals("263f67fa-ce8f-447b-98cf-317656542216", appointment1.getClientId());
+		assertNotNull(appointment1.getStartTime());
+		assertNotNull(appointment1.getEndTime());
+	}
+
+	@Test
+	public void testParsingServiceFile() throws ClientRankingException {
+		InputDto inputDto = new InputDto();
+		inputDto.setServiceFilePath(Paths.get("files/test1/s1.csv"));
+		csvParser.parseInputParameters(inputDto);
+		assertNotNull(inputDto.getServiceList());
+		assertEquals(1031, inputDto.getServiceList().size());
+		Service service1 = inputDto.getServiceList().get(0);
+		assertEquals("f1fc7009-0c44-4f89-ac98-5de9ce58095c", service1.getId());
+		assertEquals("7416ebc3-12ce-4000-87fb-82973722ebf4", service1.getAppointmentId());
+		assertEquals("Full Head Colour", service1.getName());
+		assertEquals(Integer.valueOf(80), service1.getLoyaltyPoints());
+		assertEquals(BigDecimal.valueOf(85.0), service1.getPrice());
+	}
+
+	@Test
+	public void testParsingPurchaseFile() throws ClientRankingException {
+		InputDto inputDto = new InputDto();
+		inputDto.setPurchaseFilePath(Paths.get("files/test1/p1.csv"));
+		csvParser.parseInputParameters(inputDto);
+		assertNotNull(inputDto.getPurchaseList());
+		assertEquals(476, inputDto.getPurchaseList().size());
+		Purchase purchase1 = inputDto.getPurchaseList().get(0);
+		assertEquals("d2d3b92d-f9b5-48c5-bf31-88c28e3b73ac", purchase1.getId());
+		assertEquals("7416ebc3-12ce-4000-87fb-82973722ebf4", purchase1.getAppointmentId());
+		assertEquals("Shampoo", purchase1.getName());
+		assertEquals(Integer.valueOf(20), purchase1.getLoyaltyPoints());
+		assertEquals(BigDecimal.valueOf(19.5), purchase1.getPrice());	
 	}
 }
